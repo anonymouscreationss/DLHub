@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>DLHub | Elite AI & Web Solutions</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <meta name="description" content="DLHub: Elite AI, automation, and web development services.">
+  <meta property="og:title" content="DLHub | Elite AI & Web Solutions">
+  <meta property="og:description" content="DLHub: Elite AI, automation, and web development services.">
+  <meta property="og:image" content="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png">
+  <link rel="icon" href="https://github.githubassets.com/favicons/favicon.svg">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #1a202c;
+      --accent: #4fd1c5;
+      --bg-light: #f7fafc;
+      --bg-dark: #181a20;
+      --font-main: 'Inter', Arial, sans-serif;
+    }
+    * { box-sizing: border-box; }
+    body {
+      font-family: var(--font-main);
+      margin: 0; background: var(--bg-light); color: var(--primary);
+      transition: background 0.3s, color 0.3s;
+      scroll-behavior: smooth;
+    }
+    header nav {
+      display: flex; justify-content: space-between; align-items: center; padding: 1.2rem 2rem;
+      background: var(--primary); color: #fff;
+      position: sticky; top: 0; z-index: 99;
+    }
+    .logo { height: 40px; }
+    nav ul { display: flex; gap: 1.5rem; list-style: none; padding: 0; margin: 0;}
+    nav ul li a { color: #fff; text-decoration: none; font-weight: 700; transition: color 0.2s;}
+    nav ul li a:hover, nav ul li a.active { color: var(--accent);}
+    #darkToggle {
+      background: none; border: none; color: #fff; font-size: 1.5rem; cursor: pointer; margin-left: 1rem;
+      transition: color 0.2s;
+    }
+    .cta-btn {
+      background: var(--accent); color: #fff; padding: 0.8em 1.5em; border-radius: 999px;
+      text-decoration: none; font-size: 1rem; transition: background 0.2s;
+      box-shadow: 0 2px 8px rgba(79,209,197,0.15);
+      display: inline-block; margin-top: 1.5rem;
+      font-weight: 700;
+    }
+    .cta-btn:hover { background: #38b2ac; }
+    .hero { display: flex; align-items: center; justify-content: space-between; padding: 4rem 2rem; flex-wrap: wrap;}
+    .hero-content { max-width: 560px; animation: fadeInUp 1s;}
+    .hero-content h1 { font-size: 2.8rem; margin-bottom: 1rem;}
+    .hero-content p { font-size: 1.25rem;}
+    .hero-bg {
+      max-width: 420px; border-radius: 1.2rem; box-shadow: 0 4px 24px rgba(0,0,0,0.10);
+      background: #eee; margin-left: 2rem;
+      animation: fadeInRight 1.3s;
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(40px);}
+      to { opacity: 1; transform: translateY(0);}
+    }
+    @keyframes fadeInRight {
+      from { opacity: 0; transform: translateX(40px);}
+      to { opacity: 1; transform: translateX(0);}
+    }
+    .features { background: #fff; padding: 2.5rem 0; }
+    .features h2 { text-align: center; margin-bottom: 1.5rem;}
+    .feature-list { display: flex; gap: 2rem; justify-content: center; flex-wrap: wrap;}
+    .feature {
+      background: var(--bg-light); border-radius: 1rem; padding: 1.3rem; box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+      text-align: center; transition: transform 0.2s, box-shadow 0.2s; width: 220px; min-height: 160px;
+      animation: fadeInUp 1.1s;
+      cursor: pointer;
+    }
+    .feature:hover {
+      transform: translateY(-8px) scale(1.04);
+      box-shadow: 0 8px 32px rgba(79,209,197,0.15);
+      background: #e6fffa;
+    }
+    .icon { font-size: 2.2rem; margin-bottom: 0.7rem; display: block; transition: transform 0.2s;}
+    .feature:hover .icon { transform: scale(1.2);}
+    .testimonials { background: #eee; padding: 2.5rem 0; text-align: center; }
+    .testimonials h2 { margin-bottom: 1.2rem;}
+    .testimonial-list { display: flex; flex-wrap: wrap; gap: 2rem; justify-content: center;}
+    .testimonial-list blockquote {
+      background: #fff; border-radius: 1rem; box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      padding: 1.1rem 1.5rem; margin: 1rem 0; font-style: italic; max-width: 340px;
+      position: relative;
+      animation: fadeInUp 1.2s;
+    }
+    .testimonial-list span { display: block; margin-top: 0.8rem; font-size: 0.95rem; color: var(--accent);}
+    .portfolio { background: #fff; padding: 2.5rem 0;}
+    .portfolio h2 { text-align: center; margin-bottom: 1.5rem;}
+    .portfolio-list { display: flex; gap: 2rem; justify-content: center; flex-wrap: wrap;}
+    .portfolio-item {
+      background: var(--bg-light); border-radius: 1rem; box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+      padding: 1rem; width: 220px; text-align: center;
+      animation: fadeInUp 1.1s;
+    }
+    .portfolio-item img { width: 60px; margin-bottom: 0.8rem;}
+    .portfolio-item a { color: var(--accent); text-decoration: none;}
+    .contact-section { padding: 2.5rem 1.2rem; max-width: 460px; margin: 0 auto;}
+    .contact-section h2 { text-align: center;}
+    .contact-section form { display: flex; flex-direction: column; gap: 1rem;}
+    .contact-section input, .contact-section textarea {
+      padding: 0.8rem; border-radius: 0.5rem; border: 1px solid #ddd; font-size: 1rem; font-family: inherit;
+    }
+    .contact-section button {
+      background: var(--accent); color: #fff; border: none; padding: 0.8em 1.5em; border-radius: 999px; font-size: 1rem; cursor: pointer;
+      box-shadow: 0 2px 8px rgba(79,209,197,0.15);
+      font-weight: 700;
+      transition: background 0.2s;
+    }
+    .contact-section button:hover { background: #38b2ac;}
+    .contact-info { text-align: center; margin-top: 1.2rem; font-size: 1.1rem;}
+    .contact-info a { color: var(--accent); text-decoration: none;}
+    .form-message { text-align:center; margin-top:1rem; font-weight:700;}
+    .footer-content {
+      display: flex; justify-content: space-between; align-items: center; padding: 1rem 2rem; background: var(--primary); color: #fff; flex-wrap: wrap;
+      font-size: 1.1rem;
+    }
+    .footer-content a { color: var(--accent); margin-left: 1rem; text-decoration:none;}
+    .footer-content a:hover { text-decoration: underline;}
+    .social-icons a { margin-left: 1rem; color: #fff; }
+    .social-icons img { width: 22px; vertical-align: middle;}
+    @media (max-width: 900px) {
+      .hero, .footer-content { flex-direction: column; align-items: flex-start;}
+      .hero-bg { margin-left: 0; margin-top: 2rem; max-width: 100%;}
+      .portfolio-list, .feature-list, .testimonial-list { flex-direction: column; align-items: center;}
+    }
+    @media (max-width: 600px) {
+      header nav, .feature-list, .portfolio-list, .testimonial-list, .footer-content { flex-direction: column; gap: 1rem;}
+      .hero { padding: 2rem 1rem;}
+      .contact-section { padding: 2rem 0.5rem;}
+    }
+    body.dark {
+      background: var(--bg-dark); color: #fafafa;
+    }
+    body.dark header nav, body.dark .footer-content { background: var(--bg-dark); color: #fafafa; }
+    body.dark .features, body.dark .portfolio { background: #23272f; }
+    body.dark .feature, body.dark .portfolio-item { background: #1a202c;}
+    body.dark .contact-section input, body.dark .contact-section textarea { background: #23272f; color: #fafafa; border: 1px solid #444;}
+    body.dark .testimonial-list blockquote { background: #23272f;}
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="DLHub Logo" class="logo">
+      <ul>
+        <li><a href="#home" class="active">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#portfolio">Portfolio</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <button id="darkToggle" aria-label="Toggle dark mode">🌙</button>
+    </nav>
+  </header>
+  <main>
+    <!-- HERO -->
+    <section class="hero" id="home">
+      <div class="hero-content">
+        <h1>DLHub</h1>
+        <p>Elite AI Solutions & Automation for the Modern World.<br>
+        <span style="font-size:1rem;color:var(--accent);font-weight:700;">Production-grade. Professional. Ready to deploy.</span></p>
+        <a href="#contact" class="cta-btn">Get Started</a>
+      </div>
+      <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=420&q=80" alt="Hero Background" class="hero-bg">
+    </section>
+    <!-- ABOUT -->
+    <section id="about" class="features">
+      <h2>About DLHub</h2>
+      <p style="text-align:center;max-width:600px;margin:0 auto;">
+        DLHub’s mission: Empower innovators and businesses with elite AI, automation, and full-stack web solutions.<br>
+        <br>
+        <b>Vision:</b> Building a smarter, connected world.<br>
+        <b>Team:</b> World-class engineers, designers, and AI specialists.
+      </p>
+    </section>
+    <!-- FEATURES -->
+    <section id="features" class="features">
+      <h2>Our Core Features</h2>
+      <div class="feature-list">
+        <div class="feature" tabindex="0" aria-label="Fast Deployment">
+          <span class="icon">⚡</span>
+          <h3>Fast Deployment</h3>
+          <p>Production-ready solutions with elite speed and reliability.</p>
+        </div>
+        <div class="feature" tabindex="0" aria-label="AI & Automation">
+          <span class="icon">🤖</span>
+          <h3>AI & Automation</h3>
+          <p>Intelligent automation for business growth.</p>
+        </div>
+        <div class="feature" tabindex="0" aria-label="Modern UI/UX">
+          <span class="icon">🎨</span>
+          <h3>Modern UI/UX</h3>
+          <p>Visually engaging interfaces, fully responsive.</p>
+        </div>
+      </div>
+    </section>
+    <!-- PORTFOLIO -->
+    <section class="portfolio" id="portfolio">
+      <h2>Showcase & Projects</h2>
+      <div class="portfolio-list">
+        <div class="portfolio-item">
+          <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="App Icon">
+          <h3>DLHubBot</h3>
+          <p>Elite automation bot for your workflow.</p>
+          <a href="https://github.com/anonymouscreationss/DLHubBot" target="_blank">View on GitHub</a>
+        </div>
+        <div class="portfolio-item">
+          <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="App Icon">
+          <h3>DLHub App</h3>
+          <p>Next-gen AI-powered web application.</p>
+          <a href="https://github.com/anonymouscreationss/DLHubApp" target="_blank">View on GitHub</a>
+        </div>
+      </div>
+    </section>
+    <!-- TESTIMONIALS -->
+    <section class="testimonials" id="testimonials">
+      <h2>Testimonials</h2>
+      <div class="testimonial-list">
+        <blockquote>
+          "DLHub transformed our workflow with cutting-edge automation."
+          <span>- Tech Startup CEO</span>
+        </blockquote>
+        <blockquote>
+          "Superb design and flawless deployment. Highly recommended."
+          <span>- Product Manager</span>
+        </blockquote>
+      </div>
+    </section>
+    <!-- CONTACT -->
+    <section class="contact-section" id="contact">
+      <h2>Contact Us</h2>
+      <form id="contactForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" autocomplete="off">
+        <input type="text" name="name" placeholder="Your Name" required aria-label="Your Name">
+        <input type="email" name="email" placeholder="Your Email" required aria-label="Your Email">
+        <textarea name="message" placeholder="Your Message" rows="5" required aria-label="Your Message"></textarea>
+        <button type="submit">Send Message</button>
+      </form>
+      <div id="form-message" class="form-message" aria-live="polite"></div>
+      <div class="contact-info">
+        <div>Email: <a href="mailto:info@dlhub.ai" aria-label="Email">info@dlhub.ai</a></div>
+        <div>Phone: <a href="tel:+1-555-555-5555" aria-label="Phone">+1-555-555-5555</a></div>
+        <div class="social-icons" style="margin-top:0.8rem;">
+          <a href="https://twitter.com/" target="_blank" aria-label="Twitter">
+            <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/twitter.svg" alt="Twitter" />
+          </a>
+          <a href="https://linkedin.com/" target="_blank" aria-label="LinkedIn">
+            <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/linkedin.svg" alt="LinkedIn" />
+          </a>
+          <a href="https://github.com/anonymouscreationss/DLHub" target="_blank" aria-label="GitHub">
+            <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/github.svg" alt="GitHub" />
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <div class="footer-content">
+      <span>© DLHub 2025 | Crafted by DLHub Team</span>
+      <a href="https://github.com/anonymouscreationss/DLHub" target="_blank" aria-label="GitHub">GitHub</a>
+      <div class="social-icons">
+        <a href="https://twitter.com/" target="_blank" aria-label="Twitter">
+          <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/twitter.svg" alt="Twitter" />
+        </a>
+        <a href="https://linkedin.com/" target="_blank" aria-label="LinkedIn">
+          <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/linkedin.svg" alt="LinkedIn" />
+        </a>
+        <a href="https://github.com/anonymouscreationss/DLHub" target="_blank" aria-label="GitHub">
+          <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/github.svg" alt="GitHub" />
+        </a>
+      </div>
+    </div>
+  </footer>
+  <script>
+    // Dark mode toggle
+    const darkToggle = document.getElementById('darkToggle');
+    darkToggle.addEventListener('click', () => {
+      document.body.classList.toggle('dark');
+      darkToggle.textContent = document.body.classList.contains('dark') ? '☀️' : '🌙';
+    });
+
+    // Smooth scroll for anchor links
+    document.querySelectorAll('nav ul li a').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        document.querySelectorAll('nav ul li a').forEach(a => a.classList.remove('active'));
+        this.classList.add('active');
+        if (this.getAttribute('href').startsWith('#')) {
+          e.preventDefault();
+          document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    });
+
+    // Contact form validation and AJAX feedback (Formspree)
+    const contactForm = document.getElementById('contactForm');
+    const formMessage = document.getElementById('form-message');
+    if(contactForm) {
+      contactForm.addEventListener('submit', function(e){
+        // Basic validation
+        const email = contactForm.email.value;
+        if (!email.match(/^\S+@\S+\.\S+$/)) {
+          formMessage.textContent = 'Please enter a valid email address.';
+          formMessage.style.color = '#e53e3e';
+          e.preventDefault();
+          return;
+        }
+        formMessage.textContent = 'Sending...';
+        formMessage.style.color = 'var(--accent)';
+        // AJAX submit for instant feedback
+        e.preventDefault();
+        fetch(contactForm.action, {
+          method: 'POST',
+          body: new FormData(contactForm),
+          headers: { 'Accept': 'application/json' }
+        }).then(response => {
+          if(response.ok){
+            formMessage.textContent = 'Thank you! Your message was sent successfully.';
+            formMessage.style.color = 'var(--accent)';
+            contactForm.reset();
+          }else{
+            response.json().then(data=>{
+              formMessage.textContent = data.error || 'An error occurred. Please try again later.';
+              formMessage.style.color = '#e53e3e';
+            });
+          }
+        }).catch(()=>{
+          formMessage.textContent = 'Network error. Please try again.';
+          formMessage.style.color = '#e53e3e';
+        });
+      });
+    }
+
+    // Accessibility: keyboard focus for features
+    document.querySelectorAll('.feature').forEach(el => {
+      el.addEventListener('keydown', function(e){
+        if(e.key === 'Enter') this.click();
+      });
+    });
+  </script>
+</body>
+</html>
